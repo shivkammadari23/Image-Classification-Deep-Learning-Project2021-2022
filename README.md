@@ -28,7 +28,13 @@ We utilize a massive dataset of thousands of chest X-rays from **Kaggle** (lever
 ### 4. A First Look (Data Exploration)
 Before the AI starts learning, we inspect the data. The repository includes scripts to generate:
 * **X-Ray Grid:** Visualizes clear *Normal* scans alongside *Pneumonia* scans showing cloudy fluid areas in the lungs.
-* **Class Distribution Chart:** A bar chart showing image counts to ensure the AI has a balanced set of examples to learn from.
+ ![Baseline Chest X-ray Analysis](xray_normal.png)
+
+* **Class Distribution Chart:** bar charts showing image counts to ensure the AI has a balanced set of examples to learn from.
+
+![Train-Validation Evaluation Split](train_validation_Split.png)
+
+![Train-Test Distribution Split](train_test_Split2.png)
 
 ### 5. Teaching the AI (Training)
 We leverage a powerful pre-trained **Inception v3 / ResNet** architecture. While it initially knows how to recognize general shapes, we fine-tune its deep layers to recognize complex medical patterns.
@@ -38,15 +44,22 @@ We leverage a powerful pre-trained **Inception v3 / ResNet** architecture. While
   * **Accuracy Chart:** Shows the AI getting smarter over time.
   * **Loss Chart:** Tracks its mistakes getting smaller with every epoch.
 
+  ![Accuracy and Loss Tracking Curves](accuracy_loss.png)
+
 ### 6. The Final Grade
 Once training concludes, we expose the model to entirely unseen test data. 
 * **Confusion Matrix:** A blue heatmap that maps exactly where the AI succeeded and where it got confused between Normal and Pneumonia cases. 
 * **Performance:** With a top accuracy of **over 94%**, the network proves to be a highly effective diagnostic tool.
+![Threshold Performance Evaluation Chart](performance_chart.png)
 
 ### 7. X-Ray Vision: Grad-CAM (The Story of Learning)
 This is the most critical part of the explainability framework. We use **Grad-CAM** to overlay visual heatmaps directly onto the X-rays:
 * 🔥 **Red/Yellow areas:** Indicate the exact pixels the AI weighted most heavily to make its final diagnosis.
-* 📊 **The Transformation Grid:** A final large chart comparing the original X-ray against a sequence of heatmaps across training. 
+![Grad-CAM Explainability Framework](grad-cam.png)
+
+* 📊 **The Transformation Grid:** A final large chart comparing the original X-ray against a sequence of heatmaps across training.
+
+![Side-by-Side Model Heatmap Comparisons](comparing_heatmaps.png)
 
 > **The Learning Narrative:** Before fine-tuning, the heatmaps are scattered and random. By **Epoch 10**, the heatmaps focus tightly on the specific lung regions where pneumonia resides, proving the AI isn't just guessing—it's looking at the exact clinical evidence.
 
